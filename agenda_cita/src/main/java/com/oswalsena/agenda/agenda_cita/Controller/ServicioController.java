@@ -31,7 +31,7 @@ public class ServicioController {
     @GetMapping("/{id}")
     public Servicio getServicioById(@PathVariable Long id) {
         return servicioRepository.findById(id)
-            .orElseThrow(() -> new RuntimeException("No se encontró el serviciocon ID: " + id));
+            .orElseThrow(() -> new RuntimeException("No se encontró el servicio con ID: " + id));
     }
 
     @PostMapping
@@ -42,7 +42,7 @@ public class ServicioController {
     @PutMapping("/{id}")
     public Servicio updateServivio(@PathVariable Long id, @RequestBody Servicio detalleServicio) {
         Servicio servicio = servicioRepository.findById(id)
-            .orElseThrow(() -> new RuntimeException("No se encontró el serviciocon ID: " + id));
+            .orElseThrow(() -> new RuntimeException("No se encontró el servicio con ID: " + id));
     
         servicio.setNombre(detalleServicio.getNombre());
         servicio.setPrecio(detalleServicio.getPrecio());
@@ -54,7 +54,7 @@ public class ServicioController {
     @DeleteMapping("/{id}")
     public String deleteServicio(@PathVariable Long id) {
         Servicio servicio = servicioRepository.findById(id)
-            .orElseThrow(() -> new RuntimeException("No se encontró el serviciocon ID: " + id));
+            .orElseThrow(() -> new RuntimeException("No se encontró el servicio con ID: " + id));
         
         servicioRepository.delete(servicio);
         return "El servicio con ID; " + id + " fue eliminado correctamente";
